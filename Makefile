@@ -1,5 +1,5 @@
 # library name
-lib.name = cicmtools
+lib.name = cicm-tools
 
 # Sources:
 ambicube~.class.sources := src/ambicube~.c
