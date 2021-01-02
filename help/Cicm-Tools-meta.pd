@@ -1,0 +1,12 @@
+#N canvas 1022 58 416 255 10;
+#X text 49 26 LIBRARY NAME: CICM-Tools, f 40;
+#X text 49 178 LICENSE: GNU LIBRARY GENERAL PUBLIC Version 2, f 54
+;
+#X text 48 210 WEBSITE https://github.com/porres/pd-cicm-tools, f
+54;
+#X text 49 53 DESCRIPTION: set of objects allowing you to virtually
+position a sound source in a multiphonic space.;
+#X text 49 97 VERSION: 1.5, f 40;
+#X text 49 114 RELEASE DATE: july 14th 2004, f 40;
+#X text 49 145 Copyright (C) 2003-2004 RÈmi Mignot \, MSH Paris Nord
+, f 54;

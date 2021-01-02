@@ -1,0 +1,214 @@
+#N canvas 736 79 744 584 10;
+#X obj 25 5 ambipan~;
+#X text 94 6 - 2D spatialisation by ambisonic B format;
+#X text 25 32 Authors: R.MIGNOT and B.COURRIBET \, CICM Universite
+Paris Nord \, ACI Jeunes Chercheurs "Espaces Sonores".;
+#X text 19 183 - 3rd inlet: ordinate or angle of the source in degrees.
+;
+#X text 19 205 - 1st parameter: Number of outlets \, and so of loudspeakers
+by default. Without parameters there are 4 outlets.;
+#X text 19 232 - 2nd parameter: Coordinate type: 'c' -> cartesian \,
+'p' -> polar \, by default the coordinates are cartesian.;
+#X text 19 259 - 3rd parameter: Control type of the coordinates: 'c'
+-> control data \, 's' -> audio signal \, without parameter it is control
+data.;
+#X text 19 294 - 4th parameter: Ambisonic offset. By default .3.;
+#X text 19 309 - 5th parameter: Interpolation time in ms. With control
+data only.;
+#X text 19 337 - outlets: Audio oultets to the loudspeakers. The disposition
+is: 1st outlet to the left loudspeaker facing \, then we turn to the
+right. It is possible to change this disposition.;
+#X msg 429 13 \; pd dsp 1;
+#X obj 535 19 osc~ 440;
+#X floatatom 547 68 5 0 0 0 - - -;
+#X obj 547 82 / 100;
+#X obj 558 129 ambipan~ 3 c s;
+#X obj 631 59 phasor~ 0.5;
+#X obj 663 88 -~ 0.25;
+#X obj 663 105 cos~;
+#X obj 631 89 cos~;
+#X obj 566 157 dac~;
+#X text 534 3 source;
+#X text 546 51 gain;
+#X text 588 114 X;
+#X text 633 114 Y;
+#X obj 426 195 osc~ 441;
+#X obj 426 265 *~ 0;
+#X obj 534 98 *~ 0;
+#X obj 441 249 / 100;
+#X floatatom 441 235 5 0 0 0 - - -;
+#X text 440 218 gain;
+#X text 426 178 source;
+#X floatatom 621 214 5 0 0 0 - - -;
+#X floatatom 677 214 5 0 0 0 - - -;
+#X obj 621 228 / 100;
+#X obj 513 267 pack f f;
+#X floatatom 513 214 5 0 0 0 - - -;
+#X floatatom 556 214 5 0 0 0 - - -;
+#X obj 513 228 / 100;
+#X obj 513 248 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X text 511 200 rayon;
+#X text 619 199 rayon;
+#X text 675 199 angle;
+#X text 555 200 angle;
+#X obj 489 353 dac~ 1 2 3 4 5 6 7 8;
+#X obj 513 321 ambipan~ 8 p;
+#X obj 402 472 ambipan~ 8, f 14;
+#X msg 402 410 set_nb_hp 4;
+#X msg 402 430 get_info;
+#X msg 402 449 set_offset 0.1;
+#X text 493 448 <- Change offset value;
+#X text 459 429 <------- Print information.;
+#X text 477 410 <---- Change the loudspeakers number.;
+#X text 73 404 for change of loudspeakers disposition.;
+#N canvas 778 257 432 375 change_loudspeakers_disposition 0;
+#X text 81 4 for change of the loudspeakers disposition:;
+#X text 25 27 cartesian coordinates.;
+#X msg 18 45 xy_setpos -1 1 1 1;
+#X text 29 115 polar coordinates.;
+#X msg 18 132 ra_setpos 1 135 1 45 0.7 -45 0.7 -135;
+#X text 45 154 With the symbol "ra_setpos" we can modify the disposition
+with polar coordinate \, "distance angle".;
+#X text 29 194 only with distance;
+#X msg 18 210 a_setpos 90 0 -90 180;
+#X msg 18 285 get_info;
+#X obj 18 316 ambipan~ 4;
+#X text 48 231 With the symbol "a_setpos" we can modify the disposition
+only with the distance. So the loudspeakers are on the unity circle
+with the specified angle.;
+#X text 42 63 The symbol "xy_setpos" allows to modify the loudspeakers
+disposition with their cartesian coordinates. "abscissa ordinate" from
+the first loudspeaker to the last.;
+#X connect 2 0 9 0;
+#X connect 4 0 9 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X restore 75 421 pd change_loudspeakers_disposition;
+#X text 73 455 Others fonctionnalities.;
+#N canvas 590 149 600 503 others_fonctionnalities 0;
+#X obj 171 307 ambipan~ 4 c s;
+#X obj 168 337 env~;
+#X obj 196 337 env~;
+#X obj 224 337 env~;
+#X obj 252 337 env~;
+#X floatatom 168 385 5 0 0 0 - - -;
+#X floatatom 224 418 5 0 0 0 - - -;
+#X floatatom 223 384 5 0 0 0 - - -;
+#X floatatom 168 418 5 0 0 0 - - -;
+#X floatatom 392 207 5 0 0 0 - - -;
+#X floatatom 442 207 5 0 0 0 - - -;
+#X msg 75 265 get_info;
+#X obj 222 271 pack f f;
+#X obj 222 254 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 76 291 sig~ 1;
+#X obj 392 252 sig~ 1;
+#X obj 392 221 / 100;
+#X obj 442 221 / 100;
+#X obj 442 252 sig~ 0;
+#X msg 75 142 change_type p;
+#X msg 75 159 change_type c;
+#X floatatom 392 238 5 0 0 0 - - -;
+#X floatatom 442 238 5 0 0 0 - - -;
+#X floatatom 222 207 5 0 0 0 - - -;
+#X floatatom 272 207 5 0 0 0 - - -;
+#X obj 222 221 / 100;
+#X obj 272 221 / 100;
+#X floatatom 222 238 5 0 0 0 - - -;
+#X floatatom 272 238 5 0 0 0 - - -;
+#X msg 74 108 mute_sig \$1;
+#X obj 74 91 tgl 15 0 empty empty empty 0 -6 0 8 -262144 -1 -1 0 1
+;
+#X text 219 192 Control coordinates;
+#X text 390 193 Signal coordinates;
+#X text 164 145 In order to change the coordinates type: 'c'->cartesian
+\, 'p'->polar.;
+#X text 280 396 <- Loudspeakers gain.;
+#X text 118 25 It is possible to change the coordinate type dynamicaly
+and to desactivate the audio inlet in order to use lists.;
+#X text 155 90 In order to deactivate the audio inlets. When they are
+desactivated \, the list coordinates is received by the first inlet.
+;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 0 2 3 0;
+#X connect 0 3 4 0;
+#X connect 1 0 5 0;
+#X connect 2 0 7 0;
+#X connect 3 0 6 0;
+#X connect 4 0 8 0;
+#X connect 9 0 16 0;
+#X connect 10 0 17 0;
+#X connect 11 0 0 0;
+#X connect 12 0 0 0;
+#X connect 13 0 12 0;
+#X connect 14 0 0 0;
+#X connect 15 0 0 1;
+#X connect 16 0 21 0;
+#X connect 17 0 22 0;
+#X connect 18 0 0 2;
+#X connect 19 0 0 0;
+#X connect 20 0 0 0;
+#X connect 21 0 15 0;
+#X connect 22 0 18 0;
+#X connect 23 0 25 0;
+#X connect 24 0 26 0;
+#X connect 25 0 27 0;
+#X connect 26 0 28 0;
+#X connect 27 0 12 0;
+#X connect 28 0 12 1;
+#X connect 28 0 13 0;
+#X connect 29 0 0 0;
+#X connect 30 0 29 0;
+#X restore 75 471 pd others_fonctionnalities;
+#X text 458 538 See also:;
+#X obj 599 539 ambicube~, f 13;
+#X obj 534 539 vbapan~;
+#X text 18 158 - 2nd inlet: Abscissa or distance of the source \, according
+to the coordinate type.;
+#X text 17 522 In order to use all the louspeakers of your sound card
+\, if you have a 5.1 system for example \, you must use the audio configuration
+flag at the PureData start \, see the manual of PD \, 3.6 paragraph.
+;
+#X text 5 66 The ambipan~ object spatialises a mono sound in a plan
+due to the ambisonic B format of Michael Gerzon. The gains of every
+loudspeakers allow creating a virtual location of the sound source
+around the listener.;
+#X text 19 133 - 1st inlet: Audio signal or source coordinates or others
+lists (see later).;
+#X connect 11 0 26 0;
+#X connect 12 0 13 0;
+#X connect 13 0 26 1;
+#X connect 14 0 19 0;
+#X connect 14 1 19 1;
+#X connect 15 0 16 0;
+#X connect 15 0 18 0;
+#X connect 16 0 17 0;
+#X connect 17 0 14 2;
+#X connect 18 0 14 1;
+#X connect 24 0 25 0;
+#X connect 25 0 44 0;
+#X connect 26 0 14 0;
+#X connect 27 0 25 1;
+#X connect 28 0 27 0;
+#X connect 31 0 33 0;
+#X connect 32 0 44 2;
+#X connect 33 0 44 1;
+#X connect 34 0 44 0;
+#X connect 35 0 37 0;
+#X connect 36 0 34 1;
+#X connect 36 0 38 0;
+#X connect 37 0 34 0;
+#X connect 38 0 34 0;
+#X connect 44 0 43 0;
+#X connect 44 1 43 1;
+#X connect 44 2 43 2;
+#X connect 44 3 43 3;
+#X connect 44 4 43 4;
+#X connect 44 5 43 5;
+#X connect 44 6 43 6;
+#X connect 44 7 43 7;
+#X connect 46 0 45 0;
+#X connect 47 0 45 0;
+#X connect 48 0 45 0;
