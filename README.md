@@ -16,6 +16,9 @@
 This project resides at: https://github.com/porres/pd-cicm-tools
 
 Note: CICM-Tools is abandoned and unsupported. The archived version for MAX is found at <https://github.com/CICM/CicmTools>. The Pd download of the original sources and binaries (32 bits only) can be found at <http://cicm.mshparisnord.org/>. 
+
+The version 1.5 for Pure Data was released on july 14th 2004
+
 The port to this new repository was made by Alexandre Torres Porres and aims at "resurecting" this code and also provide binaries for 64 bits as well.
 
 * * *
