@@ -15,7 +15,8 @@
 
 This project resides at: https://github.com/porres/pd-cicm-tools
 
-Note: CICM-Tools is abandoned and unsupported. The archived version for MAX is found at https://github.com/CICM/CicmTools 
+Note: CICM-Tools is abandoned and unsupported. The archived version for MAX is found at <https://github.com/CICM/CicmTools>. The Pd download of the original sources and binaries (32 bits only) can be found at <http://cicm.mshparisnord.org/>. 
+The port to this new repository was made by Alexandre Torres Porres and aims at "resurecting" this code and also provide binaries for 64 bits as well.
 
 * * *
 
@@ -40,7 +41,7 @@ This project relies on the build system called "pd-lib-builder" by Katja Vetter 
 
 * Installing with pdlibbuilder
 
-Go to the pd-else folder and use "objectsdir" to set a relative path for your build, something like:
+Go to the pd-cicm-tools folder and use "objectsdir" to set a relative path for your build, something like:
 
 <pre>make install objectsdir=../cicm-tools-build</pre>
 
@@ -49,3 +50,7 @@ Then move it to your preferred install folder for Pd and add it to the path.
 Cross compiling is also possible with something like this
 
 <pre>make CC=arm-linux-gnueabihf-gcc target.arch=arm7l install objectsdir=../</pre>
+
+* * *
+
+#### 
